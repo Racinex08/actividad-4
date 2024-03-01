@@ -30,18 +30,9 @@ import java.util.Scanner;
         // Imprimir la información del visitante
         System.out.println("\nInformación del Visitante:");
         System.out.println("Nombre: " + visitorName);
-        System.out.println("Edad: " + visitorAge + " (" + age(visitorAge) + ")");
+        System.out.println("Edad: " + visitorAge + " (" + (visitorAge >= 18 ? "Es mayor de edad" : "No es mayor de edad") + ")");
         System.out.println("Género: " + visitorGender);
         System.out.println("¿Es Residente?: " + isResident);
         scanner.close(); // Cerrar el scanner al finalizar
-    }
-
-    static String age(int args)
-    {
-        if (args >= 18)
-        {
-            return "Es mayor de edad";
-        }
-        return "No es mayor de edad";
     }
 }
