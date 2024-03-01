@@ -38,7 +38,7 @@ class VisitorInformation {
             scanner.nextLine();
         }
 
-        int averageStayTime = totalStayTime / 7; // divide by the number of days
+        int averageStayTime = totalStayTime / 7;
 
         System.out.println("\nInformación del visitante:");
         System.out.println("Nombre: " + visitorName);
