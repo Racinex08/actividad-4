@@ -1,47 +1,56 @@
 import java.util.Scanner;
 
-// Clase VisitorInformation
- class VisitorInformation {
+class VisitorInformation {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        int totalVisits = 0;
+        int totalStayTime = 0;
 
-        // Declaración y asignación de valores a variables representando información del visitante
-        String visitorName;
-        int visitorcount;
-        int visitorAge;
-        char visitorGender;
-        boolean isResident;
-
-        // Solicitar al usuario que ingrese la información del visitante
         System.out.println("Por favor, ingrese la información del visitante:");
 
         System.out.print("Nombre: ");
-        visitorName = scanner.nextLine();
+        String visitorName = scanner.nextLine();
 
         System.out.print("Edad: ");
-        visitorAge = scanner.nextInt();
+        int visitorAge = scanner.nextInt();
+        scanner.nextLine();
 
         System.out.print("Género (M/F): ");
-        visitorGender = scanner.next().charAt(0);
+        char visitorGender = scanner.nextLine().charAt(0);
 
         System.out.print("¿Es residente? (true/false): ");
-        isResident = scanner.nextBoolean();
+        boolean isResident = scanner.nextBoolean();
+        scanner.nextLine();
 
-        // Imprimir la información del visitante
-        System.out.println("\nInformación del Visitante:");
-        System.out.println("Nombre: " + visitorName);
-        System.out.println("Edad: " + visitorAge + " (" + age(visitorAge) + ")");
-        System.out.println("Género: " + visitorGender);
-        System.out.println("¿Es Residente?: " + isResident);
-        scanner.close(); // Cerrar el scanner al finalizar
-    }
+        String isAdult = (visitorAge >= 18) ? "Sí" : "No";
 
-    static String age(int args)
-    {
-        if (args >= 18)
-        {
-            return "Es mayor de edad";
+        for (int i = 0; i < 7; i++) {
+            System.out.println("Por favor, ingrese la información de la visita del día " + (i+1) + ":");
+
+            System.out.print("Cantidad de visitas hoy: ");
+            int visitsToday = scanner.nextInt();
+            totalVisits += visitsToday;
+            scanner.nextLine();
+
+            System.out.print("Tiempo total de estadía hoy (en minutos): ");
+            int stayTimeToday = scanner.nextInt();
+            totalStayTime += stayTimeToday;
+            scanner.nextLine();
         }
-        return "No es mayor de edad";
+
+        int averageStayTime = totalStayTime / 7;
+
+        System.out.println("\nInformación del visitante:");
+        System.out.println("Nombre: " + visitorName);
+        System.out.println("Edad: " + visitorAge);
+        System.out.println("¿Es mayor de edad?: " + isAdult);
+        System.out.println("Género: " + visitorGender);
+        System.out.println("¿Es residente?: " + isResident);
+
+        System.out.println("\nInformación de la semana:");
+        System.out.println("Cantidad total de visitas: " + totalVisits);
+        System.out.println("Tiempo promedio de estadía: " + averageStayTime + " minutos");
+
+        scanner.close();
     }
 }
